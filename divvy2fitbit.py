@@ -1,8 +1,8 @@
-#/usr/bin/env python
+#!/usr/bin/env python
 """
-This program fetches your divvy trips and log them as activities in fitbit.
-You will need divvy accounts and fitbit accounts.
-All configurations are stored in config.json.
+This program fetches your divvy trips and logs them as activities in fitbit.
+You will need a divvy account and a fitbit account to use this program.
+All account information are stored in config.json.
 """
 import cPickle
 import json
@@ -89,7 +89,6 @@ def get_bicycling_directions_using_google_maps_api(origin, destination):
   	'mode': 'bicycling',
   	'sensor': 'false'}	
   params = urllib.urlencode(payload)
-  print api_url_template % params
   directions = json.load(urllib2.urlopen(api_url_template % params))
   return directions
 
@@ -98,7 +97,6 @@ def format_date(date):
   """
   # strptime has limitations, so we manually parse the date.
   month, day, year = map(int, date.split('/'))
-  print year, month, day  
   import datetime
   return datetime.date(2000 + year, month, day).strftime("%Y-%m-%d")
   
@@ -124,8 +122,7 @@ def log_activity_to_fitbit(fitbit_client, date, duration, distance):
   data['durationMillis'] = format_duration(duration)
   data['date'] = format_date(date)
   data['distance'] = format_distance(distance)
-  print data
-  print fitbit_client.log_activity(data)
+  return fitbit_client.log_activity(data)
 
 def log_trips_to_fitbit(stations, trips):
   import fitbit
@@ -147,7 +144,6 @@ def log_trips_to_fitbit(stations, trips):
       print "Skipping entry from %s on %s (no destination)..." % (orig_station, date)
 
 if __name__ == '__main__':
-  from pprint import pprint
   stations = pickle_or_not('stations.datapkl', get_station_info)
   trips = pickle_or_not('trips.datapkl', get_trips)
   log_trips_to_fitbit(stations, trips)
