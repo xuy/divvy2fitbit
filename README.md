@@ -57,4 +57,4 @@ Once you have the file ready, just run
 
 	python divvy2fitbit.py
 	
-It will automatically download divvy trips, f
+After it is done processing, you will see those activities in fitbit. Hooray!
