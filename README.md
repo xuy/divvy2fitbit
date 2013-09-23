@@ -1,7 +1,8 @@
 divvy2fitbit
 ============
 
-Converts your divvy bike trips to fitbit activities.
+Divvy2fitbit converts your divvy bike trips to fitbit activities.
+
 It reads your trip information from Divvy (including date, source and destination stations,
 and during), and employs Google Maps API to calculate the bicycling distance of the trip.
 It then converts the trip into an "biking" activity and uploads to fitbit.
