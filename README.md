@@ -1,15 +1,16 @@
 divvy2fitbit
 ============
 
-Divvy2fitbit converts your divvy bike trips to fitbit activities.
+Divvy2fitbit converts your divvy bike trips to fitbit biking activities.
 
 It reads your trip information from Divvy (including date, source and destination stations,
-and during), and employs Google Maps API to calculate the bicycling distance of the trip.
-It then converts the trip into an "biking" activity and uploads to fitbit.
+and duration), and employs the Google Maps API to calculate the cycling distance of the trip.
+It then converts the trip into a "biking" activity and uploads it to fitbit
+using their API.
 
-*Note:* right now Divvy does not offer exact times for trips, so we log everything
+*Note:* right now Divvy does not offer exact times for trips, so we log these
 activity at 5:00pm. You can edit the starting time in fitbit, or change the time to 
-something else. I am going to nag the Divvy developers to expose trip start time.
+something else. I have nagged the Divvy developers many times for this...
 
 Prerequisites
 -----------------
@@ -23,7 +24,7 @@ divvy2fitbit depends on the following python packages:
  
 For the fitbit package, you will have to download the source code
 from [my fork](https://github.com/xuy/python-fitbit), because right now
-the [official](https://github.com/orcasgit/python-fitbit) does not
+the [official](https://github.com/orcasgit/python-fitbit) version does not
 support activity logging.
 
 Once you have python-fitbit installed, run
